@@ -1,5 +1,4 @@
-// // Queue implementation using array without pointers
-
+// // Circular Queue implementation using array
 #include <stdio.h>
 
 int queue[100];
@@ -8,13 +7,14 @@ int rear = -1;
 int size;
 
 void enqueue(int value) {
-    if (rear == size - 1) {
+    if ((rear + 1) % size == front) {
         printf("Queue is full\n");
     } else {
-        if (front == -1) {
+        if (front == -1) { // Inserting the first element
             front = 0;
         }
-        queue[++rear] = value;
+        rear = (rear + 1) % size; // Circular increment
+        queue[rear] = value;
         printf("%d enqueued to queue\n", value);
     }
 }
@@ -23,9 +23,11 @@ void dequeue() {
     if (front == -1) {
         printf("Queue is empty\n");
     } else {
-        printf("Dequeued element: %d\n", queue[front++]);
-        if (front > rear) {
+        printf("Dequeued element: %d\n", queue[front]);
+        if (front == rear) { // Queue is now empty after this operation
             front = rear = -1;
+        } else {
+            front = (front + 1) % size; // Circular increment
         }
     }
 }
@@ -35,9 +37,12 @@ void display() {
         printf("Queue is empty\n");
     } else {
         printf("Queue elements are:\n");
-        for (int i = front; i <= rear; i++) {
+        int i = front;
+        while (i != rear) {
             printf("%d\n", queue[i]);
+            i = (i + 1) % size;
         }
+        printf("%d\n", queue[rear]); // Print the last element
     }
 }
 
@@ -60,14 +65,15 @@ int main() {
         
         int choice;
         scanf("%d", &choice);
-        int value;
 
         switch (choice) {
-            case 1:
+            case 1: {
+                int value;
                 printf("Enter the element to be enqueued: ");
                 scanf("%d", &value);
                 enqueue(value);
                 break;
+            }
             case 2:
                 dequeue();
                 break;
@@ -83,5 +89,3 @@ int main() {
 
     return 0;
 }
-
-
