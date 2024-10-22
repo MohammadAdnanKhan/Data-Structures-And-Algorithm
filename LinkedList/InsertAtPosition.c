@@ -9,10 +9,8 @@ struct Node {
 struct Node* head = NULL;  
 
 void insertNodeAtPosition(int data, int position) {
-    int i;
-    struct Node* newNode, *temp;
 
-    newNode = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
     if (newNode == NULL) {
         printf("Unable to allocate memory.\n");
@@ -29,9 +27,9 @@ void insertNodeAtPosition(int data, int position) {
         return;
     }
 
-    temp = head;
+    struct Node* temp = head;
 
-    for (i = 1; i < position - 1; i++) {
+    for (int i = 1; i < position - 1; i++) {
         temp = temp->next;
         if (temp == NULL) {
             break;
