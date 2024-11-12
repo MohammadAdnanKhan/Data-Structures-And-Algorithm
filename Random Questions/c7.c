@@ -1,0 +1,1 @@
+// Create magic square (where the sum of elements in every row, column, and both diagonals is the same) for a given matrix N x N matrix

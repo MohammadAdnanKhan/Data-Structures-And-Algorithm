@@ -1,0 +1,1 @@
+//  Write a C program to rearrange an array such that the first element is the maximum, the second is minimum, the third is the second maximum, and so on, without using extra space. For exapmple, given [1,2,3,4,5,6,7], the o/p should be [7,1,6,2,5,3,4]

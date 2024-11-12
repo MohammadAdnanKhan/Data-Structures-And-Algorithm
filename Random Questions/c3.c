@@ -1,0 +1,1 @@
+//  Generate a menu based simple calculator with functions for addition, subtraction, multiplication and division using a switch statement
